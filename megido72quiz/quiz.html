@@ -1,0 +1,106 @@
+<!DOCTYPE html >
+<html dir="ltr" lang="ja" ng-app>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="description" content="メギド体を覚えるためのサイト|メギド体クイズ">
+<meta name="keywords" content="">
+<title>メギド体を覚えるためのサイト|メギド体クイズ</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/mysuggest.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery1.7.2.min.js"></script>
+<script src="js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script src="js/megidoQuiz.js"></script>
+<script src="js/Jquery.mysuggest.js"></script>
+<script src="js/megidoSuggest.js"></script>
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div id="header">
+	<div class="inner">
+		<!-- ロゴ -->
+		<div class="logo">
+			<a href="index.html">メギド体を覚えるためのサイト</a>
+		</div>
+		<!-- / ロゴ -->
+    
+	  <!-- メインナビゲーション -->
+    <nav id="mainNav">
+  		<a class="menu" id="menu"><span>MENU</span></a>
+			<div class="panel">
+				<ul>
+					<li><a href="index.html">メギド体一覧<br><span>megidoList</span></a></li>
+					<li class="active"><a href="quiz.html">メギド体クイズ<br><span>megidoQuiz</span></a></li>
+					<li><a href="https://megido72-portal.com/">メギド72公式ポータル<br><span>official</span></a></li>
+					<li><a href="https://event.goodsmile.info/event/event-5823/">アキバCOギャラリー<br><span>caravan</span></a></li>
+				</ul>
+      </div>
+    </nav>
+		<!-- メインナビゲーション -->
+  </div>
+</div>
+<!-- / ヘッダー -->
+
+<div id="wrapper" ng-controller="mainCtrl">
+
+	<!-- コンテンツ -->
+	<section id="main">
+		<section class="content">
+			<h3 class="heading" style="text-align:center;" ng-hide="finishFlg">これは誰のメギド体？{{now}}/{{total}}</h3>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<h3 class="heading" style="text-align:center;" ng-show="finishFlg">全問終了！お疲れさまでした。</h3>
+			<div ng-hide="finishFlg">
+				<input id="search" type="text" name="searchName" ng-model="searchName" autocomplete="off"/>
+				<button class="searchButton" ng-click="search()">答える</button>
+				<span ng-show="rock"><button class="searchButtonDisabled" disabled>次へ</button></span>
+				<span ng-hide="rock"><button class="searchButton" ng-click="next()">次へ</button></span>
+				<span style="color:red;">{{result}}</span>
+				<article style="text-align : center; margin-top:10px;">
+					<img ng-src="{{question.image_url}}" width="500px" height="500px" alt="" class="aligncenter frame">
+		    	</article>
+			</div>
+			<div ng-show="finishFlg" style="text-align : center;">
+				<div ng-show="missArr.length == 0">
+					<h1>全問正解！！おめでとうございます。</h1>
+					<div>↓結果をツイートする</div>
+					<div id="tweet-area"><!-- ここにツイートボタンが生成される--></div>
+				</div>
+				<div ng-show="missArr.length > 0">
+					<h1>あなたが間違えたのは<span style="color:red;">{{missArr.length}}体</span>でした。</h1>
+					<button ng-click="retry()">再挑戦</button>
+					<button ng-click="retryMissOnly()">間違えたメギドだけで挑戦</button>
+					<div>↓結果をツイートする</div>
+					<div id="tweet-area2"><!-- ここにツイートボタンが生成される--></div>
+					
+					<section class="gridWrapper">
+						<article class="grid" ng-repeat="megido in missArr" style="margin-bottom:20px;">
+							<h3>{{megido.name}}</h3>
+							<p class="img"><img ng-src="{{megido.image_url}}" width="170" height="170" alt=""></p>	
+						</article>
+					</section>
+				</div>
+			</div>
+		</section>    
+	</section>
+	<!-- / コンテンツ -->
+
+</div>
+<!-- / WRAPPER -->
+
+<!-- フッター -->
+<div id="footer">
+	<div class="grid copyright" style="text-align:center;float: right;">
+	  © 2021 <a href="https://twitter.com/bari_0609" target="_blank" rel="nofollow">@bari_0609</a>. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a>
+	</div>
+</div>
+<!-- / フッター -->
+
+</body>
+</html>

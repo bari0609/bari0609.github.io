@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja" ng-app>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="description" content="メギド体を覚えるためのサイト|メギド体一覧">
+<meta name="keywords" content="">
+<title>メギド体を覚えるためのサイト|メギド体一覧</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/mysuggest.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery1.7.2.min.js"></script>
+<script src="js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/Jquery.mysuggest.js"></script>
+<script src="js/megidoSuggest.js"></script>
+<style>
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div id="header">
+	<div class="inner">
+		<!-- ロゴ -->
+		<div class="logo">
+			<a href="index.html">メギド体を覚えるためのサイト</a>
+		</div>
+		<!-- / ロゴ -->
+    
+	  <!-- メインナビゲーション -->
+    <nav id="mainNav">
+  		<a class="menu" id="menu"><span>MENU</span></a>
+			<div class="panel">
+				<ul>
+					<li class="active"><a href="index.html">メギド体一覧<br><span>megidoList</span></a></li>
+					<li><a href="quiz.html">メギド体クイズ<br><span>megidoQuiz</span></a></li>
+					<li><a href="https://megido72-portal.com/">メギド72公式ポータル<br><span>official</span></a></li>
+					<li><a href="https://event.goodsmile.info/event/event-5823/">アキバCOギャラリー<br><span>caravan</span></a></li>
+				</ul>
+      </div>
+    </nav>
+		<!-- メインナビゲーション -->
+    
+  </div>
+</div>
+<!-- / ヘッダー -->
+
+<div id="wrapper" ng-controller="mainCtrl">
+
+	<!-- メイン画像 -->
+	<div id="mainBanner" class="mainImg">
+		<img src="images/megido/mainImg.png" alt="" width="936" height="298">
+    <div class="slogan">
+			<h3 style="color:white;"><a style="color:rgb(243, 115, 164);" href="https://event.goodsmile.info/event/event-5823/"><b>メギド72 {caravan} in アキバCOギャラリー</b></a>(2021/3/20〜2021/3/28)</h3>
+			<h3 style="color:white;">で行われる、メギド体間違い探しを楽しむための練習ページです</h3>
+			<h3 style="color:white;">※非公式のファンページです</h3>
+		</div>
+	</div>
+	<!-- / メイン画像 -->
+
+	<!--検索フォーム-->
+	<form style="margin-bottom:10px;">
+		<input id="search" type="text" name="searchName" ng-model="searchName" autocomplete="off"/>
+		<button class="searchButton" ng-click="search()">検索</button>
+	</form>
+	<!--//検索フォーム-->
+ 
+	<!-- 4カラム -->
+    <section class="gridWrapper">
+		<article class="grid" ng-repeat="megido in megidoList" style="margin-bottom:20px;">
+			<h3>{{megido.name}}</h3>
+			<p class="img"><img ng-src="{{megido.image_url}}" width="170" height="170" alt=""></p>	
+		</article>
+	</section>
+	<!-- / 4カラム -->
+
+</div>
+<!-- / WRAPPER -->
+
+<!-- フッター -->
+<div id="footer">
+      <div class="grid copyright" style="text-align:center;float: right;">
+		© 2021 <a href="https://twitter.com/bari_0609" target="_blank" rel="nofollow">@bari_0609</a>. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a>
+	  </div>
+</div>
+<!-- / フッター -->
+
+</body>
+</html>
